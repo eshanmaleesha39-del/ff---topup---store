@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF TopUp Store - Sri Lanka</title>
+<style>
+body{font-family:Arial;background:#0f0f0f;color:#fff;margin:0;padding:20px}
+.card{max-width:400px;margin:auto;background:#1a1a1a;padding:20px;border-radius:15px;border:1px solid #333}
+h1{text-align:center;color:#ffcc00}
+input,select,button{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none}
+button{background:#ffcc00;color:#000;font-weight:bold;font-size:16px}
+.item{background:#222;padding:10px;border-radius:8px;margin:5px 0;display:flex;justify-content:space-between;cursor:pointer}
+.item:hover{background:#333}
+.selected{border:2px solid #ffcc00 !important}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🔥 FF DIAMOND STORE</h1>
+<p style="text-align:center;color:#aaa">LootBar Style - Instant TopUp</p>
+
+<label>Free Fire UID</label>
+<input id="uid" placeholder="UID eka danna - Ex: 12345678">
+
+<label>Diamond Package</label>
+<div class="item" onclick="sel(this,100,350)">100 Diamonds - Rs.350</div>
+<div class="item" onclick="sel(this,210,700)">210 Diamonds - Rs.700</div>
+<div class="item" onclick="sel(this,355,1150)">355 Diamonds - Rs.1150</div>
+<div class="item" onclick="sel(this,720,2200)">720 Diamonds - Rs.2200</div>
+<div class="item" onclick="sel(this,1450,4300)">1450 Diamonds - Rs.4300</div>
+
+<label>WhatsApp Number (Order eka ganna)</label>
+<input id="wanum" placeholder="Ex: 0771234567">
+
+<button onclick="order()">WhatsApp Order Danna 🚀</button>
+
+<p id="msg" style="text-align:center;color:#0f0;margin-top:10px"></p>
+</div>
+
+<script>
+let pkg="",price="";
+function sel(el,d,p){
+ document.querySelectorAll('.item').forEach(i=>i.classList.remove('selected'));
+ el.classList.add('selected');
+ pkg=d+" Diamonds"; price="Rs."+p;
+}
+function order(){
+ let uid=document.getElementById('uid').value;
+ let w=document.getElementById('wanum').value;
+ if(!uid||!pkg){alert('UID eka & Package eka select karanna!');return;}
+ let myNumber="94750491099"; // <--- MEKA UBE NUMBER EKATA HADANNA Ex: 94771234567
+ let text=`*NEW FF ORDER*%0AUID: ${uid}%0APackage: ${pkg} (${price})%0ACustomer WA: ${w}%0A%0ACheck karala diamond danna!`;
+ window.open(`https://wa.me/${myNumber}?text=${text}`,'_blank');
+ document.getElementById('msg').innerText="WhatsApp eka open wenawa...";
+}
+</script>
+</body>
+</html>
